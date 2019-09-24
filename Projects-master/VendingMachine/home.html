@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Vending Machine</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Vending Machine</h1>
+        <hr />
+        <ul class="List-group" id="errorMessages"></ul>
+        <div class="row">
+            <div id="itemsOneToThree">
+            </div>
+            <form id="moneyInForm" style="margin-top: 20px">
+                <div class="text-center col-md-4">
+                    <p style="font-weight:bold">Total $ In</p>
+                </div>
+                <div class="col-md-offset-1 col-md-2">
+                    <input type="number" id="moneyIn" class="form-control" step="any" disabled />
+                </div>
+                <div class="row">
+                    <div class="btn-group">
+                        <div class="col-md-2" style="margin: 10px 20px 5px 80px">
+                            <button type="button" id="addDollar" class="btn btn-default" style="width: 100px">
+                                Add Dollar
+                            </button>
+                        </div>
+                        <div class="col-md-2" style="margin: 10px 20px 5px 20px">
+                            <button type="button" id="addQuarter" class="btn btn-default" style="width: 100px">
+                                Add Quarter
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="btn-group">
+                            <div class="col-md-2" style="margin: 5px 20px 0px 80px">
+                                <button type="button" id="addDime" class="btn btn-default" style="width: 100px">
+                                    Add Dime
+                                </button>
+                            </div>
+                            <div class="col-md-2" style="margin: 5px 20px 0px 20px">
+                                <button type="button" id="addNickel" class="btn btn-default" style="width: 100px">
+                                    Add Nickel
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <hr style="border: solid; border-width: thin" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div id="itemsFourToSix">
+            </div>
+            <form id="messageForm" class="form-horizontal" style="margin-top: 20px">
+                <div class="text-center col-md-4">
+                    <p style="font-weight:bold">Messages</p>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="message" class="form-control" disabled />
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="itemSelect" class="col-md-1 control-label" style="margin: 10px 0px 10px 10px">
+                            Item:
+                        </label>
+                        <div class="col-md-2" style="margin: 10px 0px 10px 0px">
+                            <input type="number" class="form-control" id="itemSelect" disabled/>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-default" id="makePurchase" style="width: 87%; margin-left: 50px">
+                                Make Purchase
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <hr style="border: solid; border-width: thin" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div id="itemsSevenToNine">
+            </div>
+            <form id="changeForm" style="margin-top: 20px">
+                <div class="text-center col-md-4">
+                    <p style="font-weight:bold">Change</p>
+                </div>
+                <div class="col-md-offset-1 col-md-2">
+                    <input type="text" id="change" class="form-control" disabled />
+                </div>
+                <div class="row" style="display: none" id="changeReturnDiv">
+                    <div class="col-md-offset-1 col-md-2">
+                        <button type="button" id="changeReturn" class="btn btn-default" style="width: 95%; margin-top: 10px">
+                            Change Return
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

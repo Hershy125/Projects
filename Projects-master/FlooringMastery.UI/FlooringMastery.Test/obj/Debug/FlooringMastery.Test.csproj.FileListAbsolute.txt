@@ -1,0 +1,17 @@
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\FlooringMastery.Test.dll
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\FlooringMastery.Test.pdb
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\nunit.framework.dll
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\nunit.framework.pdb
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\nunit.framework.xml
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\obj\Debug\FlooringMastery.Test.csprojAssemblyReference.cache
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\obj\Debug\FlooringMastery.Test.csproj.CoreCompileInputs.cache
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\obj\Debug\FlooringMastery.Test.csproj.CopyComplete
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\obj\Debug\FlooringMastery.Test.dll
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\obj\Debug\FlooringMastery.Test.pdb
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\FlooringMastery.Test.dll.config
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\FlooringMastery.BLL.dll
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\FlooringMastery.Data.dll
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\FlooringMastery.Models.dll
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\FlooringMastery.BLL.pdb
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\FlooringMastery.Data.pdb
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Test\bin\Debug\FlooringMastery.Models.pdb

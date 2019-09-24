@@ -1,0 +1,12 @@
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Models\bin\Debug\FlooringMastery.Models.dll
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Models\bin\Debug\FlooringMastery.Models.pdb
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Models\obj\Debug\FlooringMastery.Models.csprojAssemblyReference.cache
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Models\obj\Debug\FlooringMastery.Models.csproj.CoreCompileInputs.cache
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Models\obj\Debug\FlooringMastery.Models.dll
+C:\Repos\C#\FlooringMastery.UI\FlooringMastery.Models\obj\Debug\FlooringMastery.Models.pdb
+C:\Repos\online-net-Hershy125\Summatives\m4-summative\FlooringMastery.UI\FlooringMastery.Models\bin\Debug\FlooringMastery.Models.dll
+C:\Repos\online-net-Hershy125\Summatives\m4-summative\FlooringMastery.UI\FlooringMastery.Models\bin\Debug\FlooringMastery.Models.pdb
+C:\Repos\online-net-Hershy125\Summatives\m4-summative\FlooringMastery.UI\FlooringMastery.Models\obj\Debug\FlooringMastery.Models.csprojAssemblyReference.cache
+C:\Repos\online-net-Hershy125\Summatives\m4-summative\FlooringMastery.UI\FlooringMastery.Models\obj\Debug\FlooringMastery.Models.csproj.CoreCompileInputs.cache
+C:\Repos\online-net-Hershy125\Summatives\m4-summative\FlooringMastery.UI\FlooringMastery.Models\obj\Debug\FlooringMastery.Models.dll
+C:\Repos\online-net-Hershy125\Summatives\m4-summative\FlooringMastery.UI\FlooringMastery.Models\obj\Debug\FlooringMastery.Models.pdb
