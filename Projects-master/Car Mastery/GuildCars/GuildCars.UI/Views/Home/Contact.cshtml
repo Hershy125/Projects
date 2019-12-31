@@ -1,0 +1,62 @@
+﻿@model GuildCars.UI.Models.ContactRequestVM
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<h2>Contact Us</h2>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { id = "frmAddContact" }))
+        {
+            @Html.ValidationSummary()
+        <div class="form-group">
+            @Html.LabelFor(m => m.NewRequest.Name)
+            @Html.TextBoxFor(m => m.NewRequest.Name, new { @class = "form-control" })
+        </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NewRequest.Email)
+                @Html.TextBoxFor(m => m.NewRequest.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NewRequest.Phone)
+                @Html.TextBoxFor(m => m.NewRequest.Phone, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NewRequest.Message)
+                @Html.TextAreaFor(m => m.NewRequest.Message, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        }
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <div id="googlemap">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2864.45604421312!2d-79.55754568457571!3d44.11521483044992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882acf7c73d341a7%3A0xfbbf13e86d6e6601!2sThe%20Guild%20of%20Automotive%20Restorers!5e0!3m2!1sen!2sus!4v1575087638297!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+        <p>44 Bridge St</p>
+        <p>Bradford, ON L3Z 3H2</p>
+        <p>Sales: 111-111-1111</p>
+        <p>Service: 111-111-1112</p>
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#frmAddContact').validate({
+                rules: {
+                    'NewRequest.Name': {
+                        required: true
+                    },
+                    'NewRequest.Message': {
+                        required: true
+                    }
+
+                }
+            })
+        })
+
+
+    </script>
+}

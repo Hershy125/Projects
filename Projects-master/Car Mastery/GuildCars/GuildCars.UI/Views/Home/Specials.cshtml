@@ -1,0 +1,31 @@
+﻿@model List<GuildCars.Models.Tables.Special>
+
+@{
+                /**/
+
+                ViewBag.Title = "Specials";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Specials</h3>
+    </div>
+</div>
+@foreach (var special in Model)
+{
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12" style="border: solid thin; margin-bottom: 10px; padding: 10px">
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="padding-bottom:20px"><strong>@special.SpecialTitle</strong></td>
+                    </tr>
+                    <tr>
+                        <td>@special.SpecialDetails</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+

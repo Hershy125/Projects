@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{89966158-C54D-4BEE-AB54-A2EFC7F7AAD7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GuildCars.Data</RootNamespace>
+    <AssemblyName>GuildCars.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.30\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq, Version=3.2.0.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.3.2.0\lib\net451\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Factory\AdminFactory.cs" />
+    <Compile Include="Factory\BodyStylesFactory.cs" />
+    <Compile Include="Factory\ColorsFactory.cs" />
+    <Compile Include="Factory\ContactRequestsFactory.cs" />
+    <Compile Include="Factory\CustomersFactory.cs" />
+    <Compile Include="Factory\PurchasesFactory.cs" />
+    <Compile Include="Factory\PurchaseTypesFactory.cs" />
+    <Compile Include="Factory\SpecialsFactory.cs" />
+    <Compile Include="Factory\TransmissionTypesFactory.cs" />
+    <Compile Include="Factory\VehicleListingsFactory.cs" />
+    <Compile Include="Factory\VehicleMakesFactory.cs" />
+    <Compile Include="Factory\VehicleModelsFactory.cs" />
+    <Compile Include="Factory\VehicleTypesFactory.cs" />
+    <Compile Include="Interfaces\IAdminRepository.cs" />
+    <Compile Include="Interfaces\IBodyStyleRepository.cs" />
+    <Compile Include="Interfaces\IColorRepository.cs" />
+    <Compile Include="Interfaces\IContactRequestRepository.cs" />
+    <Compile Include="Interfaces\ICustomerRepository.cs" />
+    <Compile Include="Interfaces\IPurchaseRepository.cs" />
+    <Compile Include="Interfaces\IPurchaseTypeRepository.cs" />
+    <Compile Include="Interfaces\ISpecialRepository.cs" />
+    <Compile Include="Interfaces\ITransmissionTypeRepository.cs" />
+    <Compile Include="Interfaces\IVehicleListingRepository.cs" />
+    <Compile Include="Interfaces\IVehicleMakeRepository.cs" />
+    <Compile Include="Interfaces\IVehicleModelRepository.cs" />
+    <Compile Include="Interfaces\IVehicleTypeRepository.cs" />
+    <Compile Include="Production\AdminRepository.cs" />
+    <Compile Include="Production\BodyStyleRepository.cs" />
+    <Compile Include="Production\ColorRepository.cs" />
+    <Compile Include="Production\ContactRequestRepository.cs" />
+    <Compile Include="Production\CustomerRepository.cs" />
+    <Compile Include="Production\PurchaseRepository.cs" />
+    <Compile Include="Production\PurchaseTypeRepository.cs" />
+    <Compile Include="Production\SpecialRepository.cs" />
+    <Compile Include="Production\TransmissionTypeRepository.cs" />
+    <Compile Include="Production\VehicleListingRepository.cs" />
+    <Compile Include="Production\VehicleMakeRepository.cs" />
+    <Compile Include="Production\VehicleModelRepository.cs" />
+    <Compile Include="Production\VehicleTypeRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QA\AdminRepoQA.cs" />
+    <Compile Include="QA\BodyStyleRepoQA.cs" />
+    <Compile Include="QA\ColorRepoQA.cs" />
+    <Compile Include="QA\ContactRequestRepoQA.cs" />
+    <Compile Include="QA\CustomerRepoQA.cs" />
+    <Compile Include="QA\PurchaseRepoQA.cs" />
+    <Compile Include="QA\PurchaseTypeRepoQA.cs" />
+    <Compile Include="QA\SpecialRepoQA.cs" />
+    <Compile Include="QA\TransmissionTypeRepoQA.cs" />
+    <Compile Include="QA\VehicleListingRepoQA.cs" />
+    <Compile Include="QA\VehicleMakeRepoQA.cs" />
+    <Compile Include="QA\VehicleModelRepoQA.cs" />
+    <Compile Include="QA\VehicleTypeRepoQA.cs" />
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GuildCars.Models\GuildCars.Models.csproj">
+      <Project>{64f9d9d7-5dae-4b3b-91ba-3dc5d2c0b3eb}</Project>
+      <Name>GuildCars.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

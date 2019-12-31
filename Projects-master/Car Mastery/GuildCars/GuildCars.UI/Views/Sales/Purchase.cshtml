@@ -1,0 +1,202 @@
+﻿@model GuildCars.UI.Models.PurchaseVM
+
+@{
+    ViewBag.Title = "Purchase";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Purchase Vehicle</h2>
+    </div>
+</div>
+<div class="row" style="border:solid thin; padding:10px">
+    <div class="row">
+        <div class="col-xs-12">
+            <p><strong>@Model.VehicleDetails.Year @Model.VehicleDetails.VehicleMakeName  @Model.VehicleDetails.VehicleModelName</strong></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3">
+            <img src="@Url.Content("~/Images/" + Model.VehicleDetails.ImageFileName)" style="max-width:200px" />
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>Body Style:</strong></td>
+                        <td>@Model.VehicleDetails.BodyStyleName</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trans:</strong></td>
+                        <td>@Model.VehicleDetails.TransmissionTypeName</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Color:</strong></td>
+                        <td>@Model.VehicleDetails.ColorName</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>Interior:</strong></td>
+                        <td>@Model.VehicleDetails.InteriorColor</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mileage:</strong></td>
+                        <td>
+                            @if (Model.VehicleDetails.Mileage == 0)
+                            {
+                                <text>New</text>
+                            }
+                            else
+                            {
+                                @Model.VehicleDetails.Mileage.ToString();
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>VIN #:</strong></td>
+                        <td>@Model.VehicleDetails.VIN</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>Sale Price:</strong></td>
+                        <td>@Model.VehicleDetails.SalePrice.ToString("c")</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MSRP:</strong></td>
+                        <td>@Model.VehicleDetails.MSRP.ToString("c")</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-3 col-xs-9">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>Description:</strong></td>
+                        <td>@Model.VehicleDetails.Description</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<h3>Sales Information</h3>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        @using (Html.BeginForm("Purchase", "Sales", FormMethod.Post, new { id = "frmAddPurchase" }))
+        {
+            @Html.ValidationSummary()
+            <div class="row">
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.Buyer.Name, "Name")
+                    @Html.TextBoxFor(m => m.Buyer.Name, new { @class = "form-control", style = "width:400px" })
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.Buyer.Phone, "Phone")
+                    @Html.TextBoxFor(m => m.Buyer.Phone, new { @class = "form-control", style = "width:400px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.Buyer.Email, "Email")
+                    @Html.TextBoxFor(m => m.Buyer.Email, new { @class = "form-control", style = "width:400px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.Buyer.Street1, "Street 1")
+                    @Html.TextBoxFor(m => m.Buyer.Street1, new { @class = "form-control", style = "width:400px" })
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.Buyer.Street2, "Street 2")
+                    @Html.TextBoxFor(m => m.Buyer.Street2, new { @class = "form-control", style = "width:400px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.Buyer.City, "City")
+                    @Html.TextBoxFor(m => m.Buyer.City, new { @class = "form-control", style = "width:400px" })
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.Buyer.State, "State")
+                    @Html.DropDownListFor(m => m.Buyer.State, new SelectList(Model.StatesList, "State"), new { @class = "form-control", style = "width:75px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.Buyer.ZipCode, "ZipCode")
+                    @Html.TextBoxFor(m => m.Buyer.ZipCode, new { @class = "form-control", style = "width:400px" })
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.NewPurchase.PurchasePrice, "Purchase Price")
+                    @Html.TextBoxFor(m => m.NewPurchase.PurchasePrice, new { @class = "form-control", style = "width:400px" })
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.LabelFor(m => m.NewPurchase.PurchaseTypeId, "Purchase Type")
+                    @Html.DropDownListFor(m => m.NewPurchase.PurchaseTypeId, new SelectList(Model.PurchaseTypes, "PurchaseTypeId", "PurchaseTypeName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            @Html.HiddenFor(m => m.VehicleDetails.VehicleListingId)
+            @Html.HiddenFor(m => m.VehicleDetails.SalePrice)
+            @Html.HiddenFor(m => m.VehicleDetails.MSRP)
+            <div class="row">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#frmAddPurchase').validate({
+                rules: {
+                    'Buyer.Name': {
+                        required: true
+                    },
+                    'Buyer.Phone': {
+                        required: true,
+                        phoneUS: true
+                    },
+                    'Buyer.Email': {
+                        required: true,
+                        email: true
+                    },
+                    'Buyer.Street1': {
+                        required: true
+                    },
+                    'Buyer.City': {
+                        required: true
+                    },
+                    'Buyer.ZipCode': {
+                        required: true
+                    },
+                    'NewPurchase.PurchasePrice': {
+                        required: true,
+                        number: true,
+                        min: 1
+                    },
+                }
+            })
+        })
+
+
+    </script>
+}

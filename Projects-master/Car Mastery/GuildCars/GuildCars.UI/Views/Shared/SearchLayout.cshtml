@@ -1,0 +1,33 @@
+﻿<div class="row" style="border: solid thin; margin-top: 20px; margin-bottom: 20px; padding: 10px">
+    <div class="col-xs-12">
+        <p><strong>Quick Search</strong></p>
+        <form id="searchForm" class="form-inline">
+            <div class="form-group">
+                <label for="SearchTerm">Search Term</label>
+                <input type="text" class="form-control" id="SearchTerm" placeholder="Enter make, model, or year" />
+            </div>
+            <div class="form-group" style="padding-left:55px">
+                <label for="MinPrice">Price</label>
+                @Html.DropDownList("MinPrice", new SelectList(Model.PriceList), "No Min")
+            </div>
+            <div class="form-group" style="padding-left:5px">
+                <label for="MaxPrice">:</label>
+                @Html.DropDownList("MaxPrice", new SelectList(Model.PriceList), "No Max")
+            </div>
+            <div class="form-group" style="padding-left:55px">
+                <label for="MinYear">Year</label>
+                @Html.DropDownList("MinYear", new SelectList(Model.YearList), "No Min")
+            </div>
+            <div class="form-group" style="padding-left:5px">
+                <label for="MaxYear">:</label>
+                @Html.DropDownList("MaxYear", new SelectList(Model.YearList), "No Max")
+            </div>
+            <div class="row">
+                <div class="col-xs-12" style="text-align:center">
+                    <button type="submit" onclick="search()" class="btn btn-primary mb-2" style="width:200px;height:24px;line-height:12px;margin-top:10px">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,161 @@
+﻿@model GuildCars.UI.Models.AddEditListingVM
+
+@{
+    ViewBag.Title = "AddVehicle";
+}
+
+<h2>Add Vehicle</h2>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        @using (Html.BeginForm("AddVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmAddVehicle" }))
+        {
+            @Html.ValidationSummary()
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.VehicleMakeId, "Make")
+                    @Html.DropDownListFor(m => m.Listing.VehicleMakeId, new SelectList(Model.VehicleMakes, "VehicleMakeId", "VehicleMakeName"), "Select Make", new { @class = "form-control", style = "width:200px", oninput = "getModels(this.value)" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.VehicleModelId, "Model")
+                    <select class="form-control" id="Listing_VehicleModelId" name="Listing.VehicleModelId" style="width:200px">
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.VehicleTypeId, "Type")
+                    @Html.DropDownListFor(m => m.Listing.VehicleTypeId, new SelectList(Model.VehicleTypes, "VehicleTypeId", "VehicleTypeName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.BodyStyleId, "Body Styles")
+                    @Html.DropDownListFor(m => m.Listing.BodyStyleId, new SelectList(Model.BodyStyles, "BodyStyleId", "BodyStyleName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.Year, "Year")
+                    @Html.TextBoxFor(m => m.Listing.Year, new { @class = "form-control", style = "width:200px" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.TransmissionTypeId, "Transmission")
+                    @Html.DropDownListFor(m => m.Listing.TransmissionTypeId, new SelectList(Model.TransmissionTypes, "TransmissionTypeId", "TransmissionTypeName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.ColorId, "Color")
+                    @Html.DropDownListFor(m => m.Listing.ColorId, new SelectList(Model.Colors, "ColorId", "ColorName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.InteriorColorId, "Interior")
+                    @Html.DropDownListFor(m => m.Listing.InteriorColorId, new SelectList(Model.Colors, "ColorId", "ColorName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.Mileage, "Mileage")
+                    @Html.TextBoxFor(m => m.Listing.Mileage, new { @class = "form-control", style = "width:200px" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.VIN, "VIN #")
+                    @Html.TextBoxFor(m => m.Listing.VIN, new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.MSRP, "MSRP")
+                    @Html.TextBoxFor(m => m.Listing.MSRP, new { @class = "form-control", style = "width:200px" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.SalePrice, "Sale Price")
+                    @Html.TextBoxFor(m => m.Listing.SalePrice, new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(m => m.Listing.Description, "Description")
+                    @Html.TextAreaFor(m => m.Listing.Description, new { @class = "form-control", style = "max-width:200%; width:500px; height:150px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Picture</label>
+                    <input id="ImageUpload" name="ImageUpload" type="file" accept="image/png, image/jpeg, image/jpg"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+
+            
+        }
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#frmAddVehicle').validate({
+                rules: {
+                    'Listing.VehicleMakeId': {
+                        required: true
+                    },
+                    'Listing.VehicleModelId': {
+                        required: true
+                    },
+                    'Listing.Year': {
+                        required: true,
+                        number: true,
+                        min: 2000
+                    },
+                    'Listing.Mileage': {
+                        required: true,
+                        number: true
+                    },
+                    'Listing.VIN': {
+                        required: true
+                    },
+                    'Listing.MSRP': {
+                        required: true,
+                        number: true,
+                        min: 1
+                    },
+                    'Listing.SalePrice': {
+                        required: true,
+                        number: true,
+                        min: 1
+                    },
+                    'Listing.Description': {
+                        required: true
+                    },
+                    'ImageUpload': {
+                        required: true
+                    },
+
+                }
+            })
+        });
+
+        function getModels(makeId) {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:52802/api/admin/models/getbymakeid/" + makeId,
+                success: function (results) {
+                    $('#Listing_VehicleModelId').empty();
+                    $.each(results, function (index, model) {
+                        var html = '<option value="' + model.VehicleModelId + '">' +
+                            model.VehicleModelName + '</option>'
+
+                        $('#Listing_VehicleModelId').append(html.toString());
+                    });
+                },
+                error: function () {
+                    alert('Error fetching models, try again later!')
+                }
+            });
+        }
+    </script>
+    
+    
+}

@@ -1,0 +1,208 @@
+﻿@model GuildCars.UI.Models.AddEditListingVM
+
+@{
+    ViewBag.Title = "EditVehicle";
+}
+
+<h2>Edit Vehicle</h2>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        @using (Html.BeginForm("EditVehicle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmEditVehicle" }))
+        {
+            @Html.ValidationSummary()
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.VehicleMakeId, "Make")
+                    @Html.DropDownListFor(m => m.Listing.VehicleMakeId, new SelectList(Model.VehicleMakes, "VehicleMakeId", "VehicleMakeName"), new { @class = "form-control", style = "width:200px", oninput = "getModels(this.value)" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.VehicleModelId, "Model")
+                    @Html.DropDownListFor(m => m.Listing.VehicleModelId, new SelectList(Model.VehicleModels, "VehicleModelId", "VehicleModelName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.VehicleTypeId, "Type")
+                    @Html.DropDownListFor(m => m.Listing.VehicleTypeId, new SelectList(Model.VehicleTypes, "VehicleTypeId", "VehicleTypeName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.BodyStyleId, "Body Styles")
+                    @Html.DropDownListFor(m => m.Listing.BodyStyleId, new SelectList(Model.BodyStyles, "BodyStyleId", "BodyStyleName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.Year, "Year")
+                    @Html.TextBoxFor(m => m.Listing.Year, new { @class = "form-control", style = "width:200px" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.TransmissionTypeId, "Transmission")
+                    @Html.DropDownListFor(m => m.Listing.TransmissionTypeId, new SelectList(Model.TransmissionTypes, "TransmissionTypeId", "TransmissionTypeName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.ColorId, "Color")
+                    @Html.DropDownListFor(m => m.Listing.ColorId, new SelectList(Model.Colors, "ColorId", "ColorName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.InteriorColorId, "Interior")
+                    @Html.DropDownListFor(m => m.Listing.InteriorColorId, new SelectList(Model.Colors, "ColorId", "ColorName"), new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.Mileage, "Mileage")
+                    @Html.TextBoxFor(m => m.Listing.Mileage, new { @class = "form-control", style = "width:200px" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.VIN, "VIN #")
+                    @Html.TextBoxFor(m => m.Listing.VIN, new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.MSRP, "MSRP")
+                    @Html.TextBoxFor(m => m.Listing.MSRP, new { @class = "form-control", style = "width:200px" })
+                </div>
+                <div class="form-group col-md-3">
+                    @Html.LabelFor(m => m.Listing.SalePrice, "Sale Price")
+                    @Html.TextBoxFor(m => m.Listing.SalePrice, new { @class = "form-control", style = "width:200px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(m => m.Listing.Description, "Description")
+                    @Html.TextAreaFor(m => m.Listing.Description, new { @class = "form-control", style = "max-width:200%; width:500px; height:150px" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <img src="@Url.Content("~/Images/" + Model.Listing.ImageFileName)" style="max-width:100px"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Replace Picture</label>
+                    <input id="ImageUpload" name="ImageUpload" type="file" accept="image/png, image/jpeg, image/jpg" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-1 checkbox">
+                    @Html.CheckBoxFor(m => m.Listing.FeaturedVehicle, new { style = "margin:0px; padding:0px" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Listing.FeaturedVehicle, "Feature this vehicle", new { style = "margin:0px; padding:0px" })
+                </div>
+            </div>
+            @Html.HiddenFor(m => m.Listing.VehicleListingId)
+            @Html.HiddenFor(m => m.Listing.ImageFileName)
+            <div class="row">
+                <div class="form-group col-md-1">
+                    <button type="submit" class="btn btn-primary" style="margin:0px; background-color:red" onclick="confirmDelete(@Model.Listing.VehicleListingId)">Delete</button>
+                </div>
+                <div class="form-group col-md-1">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('#frmEditVehicle').validate({
+                rules: {
+                    'Listing.VehicleMakeId': {
+                        required: true
+                    },
+                    'Listing.VehicleModelId': {
+                        required: true
+                    },
+                    'Listing.Year': {
+                        required: true,
+                        number: true,
+                        min: 2000
+                    },
+                    'Listing.Mileage': {
+                        required: true,
+                        number: true
+                    },
+                    'Listing.VIN': {
+                        required: true
+                    },
+                    'Listing.MSRP': {
+                        required: true,
+                        number: true,
+                        min: 1
+                    },
+                    'Listing.SalePrice': {
+                        required: true,
+                        number: true,
+                        min: 1
+                    },
+                    'Listing.Description': {
+                        required: true
+                    },
+
+                }
+            })
+        });
+        });
+
+        function confirmDelete(id) {
+
+            if (confirm("Are you sure you want to delete this listing?")) {
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://localhost:52802/api/admin/vehicles/delete/" + id,
+                    success: function () {
+                        window.location.href = "http://localhost:52802/admin/vehicles"
+
+                    }
+                })
+            }
+
+        }
+
+        function getModels(makeId) {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:52802/api/admin/models/getbymakeid/" + makeId,
+                success: function (results) {
+                    $.each(results, function (index, model) {
+                        $('#Listing_VehicleModelId').empty();
+                        var html = '<option value="' + model.VehicleModelId + '">' +
+                            model.VehicleModelName + '</option>'
+
+                        $('#Listing_VehicleModelId').append(html.toString());
+                    });
+                },
+                error: function () {
+                    alert('Error fetching models, try again later!')
+                }
+            });
+        }
+
+        function getModelById(modelId) {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:52802/api/admin/models/getbyid/" + modelId,
+                success: function (results) {
+                    $.each(results, function (index, model) {
+                        $('#Listing_VehicleModelId').empty();
+                        var html = '<option value="' + model.VehicleModelId + '">' +
+                            model.VehicleModelName + '</option>'
+
+                        $('#Listing_VehicleModelId').append(html.toString());
+                    });
+                },
+                error: function () {
+                    alert('Error fetching models, try again later!')
+                }
+            });
+        }
+    </script>
+}
+

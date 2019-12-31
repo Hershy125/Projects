@@ -1,0 +1,63 @@
+﻿@model GuildCars.UI.Models.AddMakeVM
+
+@{
+    ViewBag.Title = "Makes";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Makes</h2>
+    </div>
+</div>
+<div class="row" style="border: solid thin; margin-top: 20px; margin-bottom: 20px; padding: 10px">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("Makes", "Admin", FormMethod.Post, new { @class = "form-inline", id = "frmAddMake" }))
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                @Html.LabelFor(m => m.NewMake.VehicleMakeName, "New Make")
+                @Html.TextBoxFor(m => m.NewMake.VehicleMakeName, new { @class = "form-control", style = "width:300px; margin-left:25px" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.NewMake.VehicleMakeName)</span>
+            </div>
+            <button type="submit" class="btn btn-primary form-group" style="margin-left:25px">Save</button>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Make</th>
+                    <th scope="col">Date Added</th>
+                    <th scope="col">User</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var make in Model.VehicleMakes)
+                {
+                    <tr>
+                        <td>@make.VehicleMakeName</td>
+                        <td>@make.CreatedDate.ToString("MM-dd-yyyy")</td>
+                        <td>@make.Email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#frmAddMake').validate({
+                rules: {
+                    'NewMake.VehicleMakeName': {
+                        required: true
+                    },
+
+                }
+            })
+        });
+    </script>
+}

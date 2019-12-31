@@ -1,0 +1,70 @@
+﻿@model GuildCars.UI.Models.AddModelVM
+
+@{
+    ViewBag.Title = "Models";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Models</h2>
+    </div>
+</div>
+<div class="row" style="border: solid thin; margin-top: 20px; margin-bottom: 20px; padding: 10px">
+    <div class="col-xs-12">
+        @using (Html.BeginForm("Models", "Admin", FormMethod.Post, new { @class = "form-inline", id = "frmAddModel" }))
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                @Html.LabelFor(m => m.NewModel.VehicleModelName, "New Model")
+                @Html.TextBoxFor(m => m.NewModel.VehicleModelName, new { @class = "form-control", style = "width:300px; margin-left:25px" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.NewModel.VehicleModelName)</span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NewModel.VehicleMakeId, "Make", new { style = "margin-left:25px" })
+                @Html.DropDownListFor(m => m.NewModel.VehicleMakeId, new SelectList(Model.VehicleMakes, "VehicleMakeId", "VehicleMakeName"), new { @class = "form-control", style = "width:200px; margin-left:25px" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.NewModel.VehicleMakeId)</span>
+            </div>
+            <button type="submit" class="btn btn-primary form-group" style="margin-left:25px">Save</button>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Make</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Date Added</th>
+                    <th scope="col">User</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var vehicleModel in Model.VehicleModels)
+                {
+                    <tr>
+                        <td>@vehicleModel.VehicleMakeName</td>
+                        <td>@vehicleModel.VehicleModelName</td>
+                        <td>@vehicleModel.CreatedDate.ToString("MM-dd-yyyy")</td>
+                        <td>@vehicleModel.Email</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#frmAddModel').validate({
+                rules: {
+                    'NewModel.VehicleModelName': {
+                        required: true
+                    },
+
+                }
+            })
+        });
+    </script>
+}

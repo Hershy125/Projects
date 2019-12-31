@@ -1,0 +1,124 @@
+﻿@model GuildCars.UI.Models.SearchBarDropDownsVM
+
+@{
+    ViewBag.Title = "Used";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Used Vehicles</h2>
+    </div>
+</div>
+<div>
+    @Html.Partial("SearchLayout")
+</div>
+<div class="row">
+    <div class="col-xs-12" id="searchResults">
+
+    </div>
+</div>
+@section scripts {
+    <script>
+         $(document).ready(function () {
+            $("#searchForm").submit(function (e) {
+                search();
+                return false;
+            });
+        });
+            
+        function search() {
+            var params;
+            var imagePath = '@Url.Content("~/Images/")';
+            var detailsPath = '@Url.Action("Details", "Inventory")/';
+            params = 'MinMSRP=' + $('#MinPrice').val() + '&MaxMSRP=' + $('#MaxPrice').val() + '&MinYear=' +
+                $('#MinYear').val() + '&MaxYear=' + $('#MaxYear').val() + '&SearchTerm=' + $('#SearchTerm').val() +
+                '&VehicleTypeId=2'
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:52802/api/inventory/used/search?' + params,
+                success: function (results) {
+                    $('#searchResults').empty();
+                    $('#searchResults').append('<h3>Search Results</h3>');
+
+                    $.each(results, function (index, listing) {
+                        var html = '<div class = "row searchResult">'+
+                                     '<div class="row">'+
+                                        '<div class="col-xs-12">'+
+                                            '<p><strong>' + listing.Year + ' ' + listing.VehicleMakeName + ' ' + listing.VehicleModelName + '</strong></p>'+
+                                        '</div>'+
+                                      '</div>'+
+                                    '<div class="row">'+
+                                        '<div class="col-xs-12 col-sm-12 col-md-3">'+
+                                            '<img src="' + imagePath + listing.ImageFileName + '"style="max-width:100px; height:auto" />'+
+                                        '</div>'+
+                                        '<div class="col-xs-12 col-sm-12 col-md-3">'+
+                                            '<table>'+
+                                                '<tbody>'+
+                                                    '<tr>'+
+                                                        '<td><strong>Body Style:</strong></td>'+
+                                                        '<td>'+ listing.BodyStyleName + '</td>'+
+                                                    '</tr>'+
+                                                    '<tr>'+
+                                                        '<td><strong>Trans:</strong></td>'+
+                                                        '<td>' + listing.TransmissionTypeName + '</td>'+
+                                                    '</tr>'+
+                                                    '<tr>'+
+                                                        '<td><strong>Color:</strong></td>'+
+                                                        '<td>' + listing.Color + '</td>'+
+                                                    '</tr>'+
+                                                '</tbody>'+
+                                            '</table>'+
+                                        '</div>'+
+                                        '<div class="col-xs-12 col-sm-12 col-md-3">'+
+                                            '<table>'+
+                                                '<tbody>'+
+                                                    '<tr>'+
+                                                        '<td><strong>Interior:</strong></td>'+
+                                                        '<td>' + listing.InteriorColor + '</td>'+
+                                                    '</tr>'+
+                                                    '<tr>'+
+                                                        '<td><strong>Mileage:</strong></td>'+
+                                                        '<td>'+ listing.Mileage + '</td>'+
+                                                    '</tr>'+
+                                                    '<tr>'+
+                                                        '<td><strong>VIN #:</strong></td>'+
+                                                        '<td>' + listing.VIN + '</td>'+
+                                                    '</tr>'+
+                                                '</tbody>'+
+                                            '</table>'+
+                                        '</div>'+
+                                        '<div class="col-xs-12 col-sm-12 col-md-3">'+
+                                            '<table>'+
+                                                '<tbody>'+
+                                                    '<tr>'+
+                                                        '<td><strong>Sale Price:</strong></td>'+
+                                                        '<td>' + '$' + listing.SalePrice + '</td>'+
+                                                    '</tr>'+
+                                                    '<tr>'+
+                                                        '<td><strong>MSRP:</strong></td>'+
+                                                        '<td>' + '$' + listing.MSRP + '</td>'+
+                                                    '</tr>'+
+                                                '</tbody>'+
+                                            '</table>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="row">'+
+                                        '<div class="col-xs-offset-9 col-xs-3">'+
+                                            '<p>'+
+                                               '<button onclick="location.href = ' + "'" + detailsPath + listing.VehicleListingId + "'" + ';">Details</button>'
+                                            '</p>' +
+                                        '</div>' +
+                                      '</div>'+
+                                     '</div>';
+
+
+                        $('#searchResults').append(html.toString());
+                    });
+                },
+                error: function() {
+                    alert('Error performing search, try again later!')
+                }
+            });
+        }
+    </script>
+}
